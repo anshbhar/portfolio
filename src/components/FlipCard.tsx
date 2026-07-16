@@ -9,16 +9,17 @@ interface FlipCardProps {
 }
 
 /**
- * A 3D flip card. The front face shows media + title; clicking flips it
+ * A stable 3D flip card. The front face shows media + title; clicking flips it
  * 180° on the Y axis to reveal the back face with info + links.
+ * Links on the back face stop propagation so they don't re-flip the card.
  */
-export default function FlipCard({ front, back, accent = '#38bdf8', className = '' }: FlipCardProps) {
+export default function FlipCard({ front, back, accent = '#2563eb', className = '' }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false);
 
   return (
     <div
       className={`relative preserve-3d cursor-pointer ${className}`}
-      style={{ perspective: 1400 }}
+      style={{ perspective: 1600 }}
       onClick={() => setFlipped((f) => !f)}
     >
       <div
@@ -31,12 +32,12 @@ export default function FlipCard({ front, back, accent = '#38bdf8', className = 
         {/* Front */}
         <div
           className="absolute inset-0 backface-hidden"
-          style={{ backfaceVisibility: 'hidden' }}
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           {front}
           {/* flip hint */}
           <div
-            className="absolute top-3 left-3 grid place-items-center w-8 h-8 rounded-full glass text-slate-200 pointer-events-none"
+            className="absolute top-3 left-3 grid place-items-center w-8 h-8 rounded-full glass text-ink-600 pointer-events-none"
             title="Click to flip"
           >
             <RotateCw className="w-3.5 h-3.5" style={{ color: accent }} />
@@ -48,6 +49,7 @@ export default function FlipCard({ front, back, accent = '#38bdf8', className = 
           className="absolute inset-0 backface-hidden"
           style={{
             backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
           }}
         >

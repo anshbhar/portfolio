@@ -11,8 +11,7 @@ interface MediaModalProps {
 
 /**
  * Full-screen modal that reveals the media (image OR video) attached to an item
- * with a dramatic 3D scale + clip transition. This is the "cool transition"
- * the user wants whenever a card is clicked.
+ * with a dramatic scale + clip transition.
  */
 export default function MediaModal({ media, title, onClose }: MediaModalProps) {
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function MediaModal({ media, title, onClose }: MediaModalProps) {
           onClick={onClose}
         >
           <motion.div
-            className="absolute inset-0 bg-ink-900/80 backdrop-blur-xl"
+            className="absolute inset-0 bg-ink-900/60 backdrop-blur-xl"
             initial={{ clipPath: 'circle(0% at 50% 50%)' }}
             animate={{ clipPath: 'circle(150% at 50% 50%)' }}
             exit={{ clipPath: 'circle(0% at 50% 50%)' }}
@@ -55,13 +54,13 @@ export default function MediaModal({ media, title, onClose }: MediaModalProps) {
             style={{ transformStyle: 'preserve-3d', perspective: 1200 }}
           >
             <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl">
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-                <span className="font-display text-lg font-semibold text-white">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-ink-200">
+                <span className="font-display text-lg font-semibold text-ink-900">
                   {title ?? 'Media'}
                 </span>
                 <button
                   onClick={onClose}
-                  className="group flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors"
+                  className="group flex items-center gap-2 text-sm text-ink-500 hover:text-ink-900 transition-colors"
                 >
                   Close
                   <span className="grid place-items-center w-9 h-9 rounded-full glass group-hover:scale-110 transition-transform">
@@ -70,7 +69,7 @@ export default function MediaModal({ media, title, onClose }: MediaModalProps) {
                 </button>
               </div>
 
-              <div className="relative bg-ink-900 aspect-video">
+              <div className="relative bg-ink-50 aspect-video">
                 {media.type === 'image' ? (
                   <motion.img
                     src={media.src}
@@ -98,7 +97,7 @@ export default function MediaModal({ media, title, onClose }: MediaModalProps) {
               </div>
 
               {media.caption && (
-                <div className="px-6 py-4 text-sm text-slate-300 font-mono">
+                <div className="px-6 py-4 text-sm text-ink-600 font-mono">
                   {media.caption}
                 </div>
               )}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, MapPin, Sparkles, Github, Linkedin, Dribbble } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Sparkles, Github, Linkedin } from 'lucide-react';
 import TiltCard from '../components/TiltCard';
 import { profile, projects } from '../data';
 import type { PageId } from '../components/Nav';
@@ -13,11 +13,10 @@ const container = {
   show: { transition: { staggerChildren: 0.12 } },
 };
 const item = {
-  hidden: { opacity: 0, y: 30, rotateX: -10 },
+  hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    rotateX: 0,
     transition: { duration: 0.7, ease: [0.23, 1, 0.32, 1] as const },
   },
 };
@@ -25,7 +24,6 @@ const item = {
 const socialIcons: Record<string, typeof Github> = {
   GitHub: Github,
   LinkedIn: Linkedin,
-  Dribbble: Dribbble,
 };
 
 export default function Home({ onNavigate }: HomeProps) {
@@ -41,40 +39,36 @@ export default function Home({ onNavigate }: HomeProps) {
           animate="show"
           className="max-w-5xl w-full text-center"
         >
-          <motion.div variants={item} className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 text-sm text-slate-300">
-            <Sparkles className="w-4 h-4 text-sky-glow" />
+          <motion.div variants={item} className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 text-sm text-ink-600">
+            <Sparkles className="w-4 h-4 text-brand-600" />
             Available for select projects — Q3 2026
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
+            className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight text-ink-900"
           >
-            <span className="text-white">Building the </span>
-            <span className="text-gradient">third dimension</span>
-            <span className="text-white"> of the web.</span>
+            Building the <span className="text-gradient">third dimension</span> of the web.
           </motion.h1>
 
-          <motion.p variants={item} className="mt-8 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <motion.p variants={item} className="mt-8 text-lg sm:text-xl text-ink-500 max-w-2xl mx-auto leading-relaxed">
             {profile.tagline}
           </motion.p>
 
           <motion.div variants={item} className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => onNavigate('projects')}
-              className="group relative magnetic overflow-hidden rounded-full px-7 py-3.5 font-medium text-ink-900"
-              style={{ background: 'linear-gradient(135deg, #38bdf8, #2dd4bf)' }}
+              className="group relative magnetic overflow-hidden rounded-full px-7 py-3.5 font-medium text-white shadow-lg hover:shadow-xl transition-shadow"
+              style={{ background: 'linear-gradient(135deg, #2563eb, #0d9488)' }}
             >
               <span className="relative z-10 flex items-center gap-2">
                 Explore Work
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
-              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ background: 'linear-gradient(135deg, #2dd4bf, #f59e0b)' }} />
             </button>
             <button
               onClick={() => onNavigate('experience')}
-              className="magnetic rounded-full glass px-7 py-3.5 font-medium text-slate-200 hover:text-white hover:border-white/20 transition-colors"
+              className="magnetic rounded-full glass px-7 py-3.5 font-medium text-ink-700 hover:text-ink-900 hover:border-brand-300 transition-colors"
             >
               My Journey
             </button>
@@ -85,7 +79,7 @@ export default function Home({ onNavigate }: HomeProps) {
             {profile.stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="font-display text-3xl sm:text-5xl font-bold text-gradient">{s.value}+</div>
-                <div className="mt-1 text-xs sm:text-sm text-slate-400 uppercase tracking-wider">{s.label}</div>
+                <div className="mt-1 text-xs sm:text-sm text-ink-400 uppercase tracking-wider">{s.label}</div>
               </div>
             ))}
           </motion.div>
@@ -104,30 +98,27 @@ export default function Home({ onNavigate }: HomeProps) {
           >
             {/* Photo */}
             <div className="perspective-1000">
-              <TiltCard maxTilt={14} className="relative rounded-3xl overflow-hidden aspect-[4/5] glow-sky" accent="#38bdf8">
+              <TiltCard maxTilt={14} className="relative rounded-3xl overflow-hidden aspect-[4/5] glow-sky" accent="#2563eb">
                 <img
                   src={profile.photo}
                   alt={profile.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="font-display text-xl font-semibold text-white">{profile.name}</div>
-                  <div className="text-sm text-sky-glow font-mono">{profile.title}</div>
+                  <div className="text-sm text-brand-200 font-mono">{profile.title}</div>
                 </div>
               </TiltCard>
             </div>
 
             {/* Info */}
             <div>
-<<<<<<< HEAD
-              <span className="text-sm font-mono text-teal-glow">/ about</span>
-=======
->>>>>>> 7e2d0c5 (Update portfolio website files)
-              <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-white">
+              <span className="text-sm font-mono text-teal-glow font-semibold">/ about</span>
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-ink-900">
                 Hi, I'm <span className="text-gradient">{profile.name}</span>
               </h2>
-              <p className="mt-4 text-slate-300 leading-relaxed">{profile.bio}</p>
+              <p className="mt-4 text-ink-600 leading-relaxed">{profile.bio}</p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 {profile.socials.map((s) => {
@@ -138,11 +129,11 @@ export default function Home({ onNavigate }: HomeProps) {
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 glass rounded-full px-4 py-2.5 text-sm text-slate-200 hover:text-white transition-colors"
+                      className="group flex items-center gap-2 glass rounded-full px-4 py-2.5 text-sm text-ink-700 hover:text-ink-900 transition-colors"
                     >
-                      <Icon className="w-4 h-4 text-sky-glow group-hover:scale-110 transition-transform" />
+                      <Icon className="w-4 h-4 text-brand-600 group-hover:scale-110 transition-transform" />
                       <span>{s.label}</span>
-                      <span className="text-slate-500 font-mono text-xs">{s.handle}</span>
+                      <span className="text-ink-400 font-mono text-xs">{s.handle}</span>
                     </a>
                   );
                 })}
@@ -150,9 +141,9 @@ export default function Home({ onNavigate }: HomeProps) {
 
               <button
                 onClick={() => onNavigate('projects')}
-                className="mt-6 group flex items-center gap-2 text-sm font-medium text-sky-glow hover:text-teal-glow transition-colors"
+                className="mt-6 group flex items-center gap-2 text-sm font-medium text-brand-600 hover:text-teal-glow transition-colors"
               >
-                See my 6 major projects
+                See my {projects.length} major projects
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
@@ -166,7 +157,7 @@ export default function Home({ onNavigate }: HomeProps) {
           {[
             { icon: Mail, label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
             { icon: MapPin, label: 'Based in', value: profile.location },
-            { icon: Sparkles, label: 'Focus', value: '3D · WebGL · Motion' },
+            { icon: Sparkles, label: 'Focus', value: 'Full-Stack · AI/ML · Ops' },
           ].map((c, i) => {
             const Icon = c.icon;
             return (
@@ -177,14 +168,14 @@ export default function Home({ onNavigate }: HomeProps) {
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
               >
-                <TiltCard maxTilt={8} className="glass rounded-2xl p-5 h-full" accent="#38bdf8">
+                <TiltCard maxTilt={8} className="glass rounded-2xl p-5 h-full card-lift" accent="#2563eb">
                   <div className="flex items-center gap-3">
-                    <div className="grid place-items-center w-11 h-11 rounded-xl bg-sky-glow/10">
-                      <Icon className="w-5 h-5 text-sky-glow" />
+                    <div className="grid place-items-center w-11 h-11 rounded-xl bg-brand-50">
+                      <Icon className="w-5 h-5 text-brand-600" />
                     </div>
                     <div>
-                      <div className="text-xs text-slate-400 uppercase tracking-wider">{c.label}</div>
-                      <div className="text-slate-100 font-medium">{c.value}</div>
+                      <div className="text-xs text-ink-400 uppercase tracking-wider">{c.label}</div>
+                      <div className="text-ink-800 font-medium">{c.value}</div>
                     </div>
                   </div>
                 </TiltCard>
@@ -199,12 +190,12 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">Featured Work</h2>
-              <p className="mt-2 text-slate-400">A glimpse of recent interactive builds.</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink-900">Featured Work</h2>
+              <p className="mt-2 text-ink-500">A glimpse of recent builds.</p>
             </div>
             <button
               onClick={() => onNavigate('projects')}
-              className="group flex items-center gap-2 text-sm text-sky-glow hover:text-teal-glow transition-colors"
+              className="group flex items-center gap-2 text-sm text-brand-600 hover:text-teal-glow transition-colors"
             >
               All projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -215,28 +206,37 @@ export default function Home({ onNavigate }: HomeProps) {
             {featured.map((p, i) => (
               <motion.div
                 key={p.id}
-                initial={{ opacity: 0, y: 40, rotateY: 10 }}
-                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: i * 0.12, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
               >
-                <TiltCard maxTilt={14} className="glass rounded-2xl overflow-hidden h-full" accent={p.accent}>
-                  <div className="relative h-44 overflow-hidden">
+                <TiltCard maxTilt={14} className="glass rounded-2xl overflow-hidden h-full card-lift" accent={p.accent}>
+                  <div className="relative h-44 overflow-hidden bg-ink-100">
                     {p.media.type === 'image' ? (
                       <img src={p.media.src} alt={p.title} className="w-full h-full object-cover" />
                     ) : (
-                      <img src={p.media.poster} alt={p.title} className="w-full h-full object-cover" />
+                      <video
+                        src={p.media.src}
+                        poster={p.media.poster}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                      />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/30 to-transparent" />
-                    <span className="absolute top-3 left-3 text-xs font-mono glass rounded-full px-3 py-1 text-slate-200">
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-50/80 via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 text-xs font-mono glass rounded-full px-3 py-1 text-ink-700">
                       {p.year}
                     </span>
                   </div>
                   <div className="p-5">
-                    <div className="text-xs uppercase tracking-wider" style={{ color: p.accent }}>{p.category}</div>
-                    <h3 className="mt-1 font-display text-xl font-semibold text-white">{p.title}</h3>
-                    <p className="mt-2 text-sm text-slate-400 line-clamp-2">{p.description}</p>
+                    <div className="text-xs uppercase tracking-wider font-semibold" style={{ color: p.accent }}>{p.category}</div>
+                    <h3 className="mt-1 font-display text-xl font-semibold text-ink-900">{p.title}</h3>
+                    <p className="mt-2 text-sm text-ink-500 line-clamp-2">{p.description}</p>
                   </div>
                 </TiltCard>
               </motion.div>
@@ -255,17 +255,17 @@ export default function Home({ onNavigate }: HomeProps) {
           className="max-w-4xl mx-auto glass-strong rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden"
         >
           <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-3xl opacity-40"
-            style={{ background: 'radial-gradient(circle, #38bdf8, transparent 70%)' }} />
-          <h2 className="relative font-display text-3xl sm:text-5xl font-bold text-white">
+            style={{ background: 'radial-gradient(circle, #bfdbfe, transparent 70%)' }} />
+          <h2 className="relative font-display text-3xl sm:text-5xl font-bold text-ink-900">
             Let's build something <span className="text-gradient">dimensional.</span>
           </h2>
-          <p className="relative mt-4 text-slate-300 max-w-xl mx-auto">
+          <p className="relative mt-4 text-ink-600 max-w-xl mx-auto">
             {profile.bio}
           </p>
           <button
             onClick={() => onNavigate('certificates')}
-            className="relative mt-8 magnetic rounded-full px-7 py-3.5 font-medium text-ink-900"
-            style={{ background: 'linear-gradient(135deg, #f59e0b, #fb7185)' }}
+            className="relative mt-8 magnetic rounded-full px-7 py-3.5 font-medium text-white shadow-lg hover:shadow-xl transition-shadow"
+            style={{ background: 'linear-gradient(135deg, #d97706, #db2777)' }}
           >
             See my credentials
           </button>

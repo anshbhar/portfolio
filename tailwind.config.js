@@ -5,23 +5,40 @@ export default {
     extend: {
       colors: {
         ink: {
-          900: '#070912',
-          800: '#0c1020',
-          700: '#131830',
-          600: '#1c2244',
-          500: '#28305c',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+        },
+        brand: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
         sky: {
-          glow: '#38bdf8',
+          glow: '#2563eb',
         },
         teal: {
-          glow: '#2dd4bf',
+          glow: '#0d9488',
         },
         gold: {
-          glow: '#f59e0b',
+          glow: '#d97706',
         },
         coral: {
-          glow: '#fb7185',
+          glow: '#db2777',
         },
       },
       fontFamily: {
@@ -35,6 +52,8 @@ export default {
         'spin-slow': 'spin 20s linear infinite',
         'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
         'gradient-x': 'gradientX 8s ease infinite',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'slide-up': 'slideUp 0.6s ease-out forwards',
       },
       keyframes: {
         float: {
@@ -48,6 +67,14 @@ export default {
         gradientX: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        slideUp: {
+          from: { opacity: '0', transform: 'translateY(20px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

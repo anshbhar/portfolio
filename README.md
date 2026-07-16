@@ -1,21 +1,15 @@
-<<<<<<< HEAD
-# portfolio_website
+# Ansh Bhardwaj — Portfolio
 
-[![Open in Bolt](https://bolt.new/static/open-in-bolt.svg)](https://bolt.new/~/sb1-zxvcza3y)
-=======
-# Aria Vance — Creative Developer Portfolio
-
-A single-page portfolio site built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion, featuring an interactive 3D scene and animated page transitions.
+A single-page portfolio site built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion, featuring animated page transitions and a bright, professional UI.
 
 [![Open in Bolt](https://bolt.new/static/open-in-bolt.svg)](https://bolt.new/~/sb1-zxvcza3y)
 
 ## Features
 
 - Home, Projects, Certificates, Experience, Skills, and Education sections
-- Animated page transitions and tilt/flip card interactions
-- Interactive 3D background scene
-- Media modal for viewing certificates/project media
-- Fully responsive, dark-themed UI built with Tailwind CSS
+- Animated page transitions and flip card interactions
+- Autoplaying project videos and media modal for certificates
+- Fully responsive, light-themed UI built with Tailwind CSS
 
 ## Tech Stack
 
@@ -63,7 +57,7 @@ This starts the Vite dev server (by default at `http://localhost:5173`) with hot
 ```
 ├── public/              # Static assets (certificates, videos)
 ├── src/
-│   ├── components/      # Reusable UI components (Nav, Scene3D, TiltCard, etc.)
+│   ├── components/      # Reusable UI components (Nav, TiltCard, FlipCard, etc.)
 │   ├── pages/            # Page-level components (Home, Projects, Skills, etc.)
 │   ├── App.tsx           # Root app component and page routing (state-based)
 │   ├── data.ts           # Site content (projects, skills, experience, etc.)
@@ -95,7 +89,7 @@ This repo includes a GitHub Actions workflow at `.github/workflows/deploy.yml` t
 ### Option 3: Netlify
 
 1. Push the repo to GitHub.
-2. Go to [app.netlify.com](https://app.netlify.com), click **Add new site → Import an existing project**, and select the repo.
+2. Go to [app.netlify.com](https://app.netlify.com), click **Add new Site → Import an existing project**, and select the repo.
 3. Netlify reads the build settings from `netlify.toml` automatically. Click **Deploy**.
 
 ### Manual build
@@ -132,4 +126,3 @@ git push
 ## License
 
 This project is provided as-is for personal portfolio use.
->>>>>>> 7e2d0c5 (Update portfolio website files)

@@ -1,9 +1,5 @@
 import { motion } from 'framer-motion';
-<<<<<<< HEAD
-import { Award, Play, Image as ImageIcon, ShieldCheck } from 'lucide-react';
-=======
 import { Award, Play, Image as ImageIcon, ShieldCheck, FileText } from 'lucide-react';
->>>>>>> 7e2d0c5 (Update portfolio website files)
 import { useState } from 'react';
 import TiltCard from '../components/TiltCard';
 import MediaModal from '../components/MediaModal';
@@ -27,12 +23,9 @@ export default function Certificates() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-<<<<<<< HEAD
-          <span className="text-sm font-mono text-teal-glow">/ certificates</span>
-=======
->>>>>>> 7e2d0c5 (Update portfolio website files)
-          <h1 className="mt-2 font-display text-4xl sm:text-6xl font-bold text-white">Credentials</h1>
-          <p className="mt-3 text-slate-400 max-w-xl">
+          <span className="text-sm font-mono text-teal-glow font-semibold">/ certificates</span>
+          <h1 className="mt-2 font-display text-4xl sm:text-6xl font-bold text-ink-900">Credentials</h1>
+          <p className="mt-3 text-ink-500 max-w-xl">
             Continuous learning, verified. Click a credential to view its proof — image or video.
           </p>
         </motion.div>
@@ -41,14 +34,13 @@ export default function Certificates() {
           {certificates.map((c, i) => (
             <motion.div
               key={c.id}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40, rotateY: 8 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-              style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             >
               <TiltCard
                 maxTilt={10}
-                className="glass rounded-2xl p-6 h-full cursor-pointer group"
+                className="glass rounded-2xl p-6 h-full cursor-pointer group card-lift"
                 accent={c.accent}
               >
                 <button
@@ -63,11 +55,11 @@ export default function Certificates() {
                       <Award className="w-7 h-7" style={{ color: c.accent }} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-sky-glow transition-colors">
+                      <h3 className="font-display text-lg font-semibold text-ink-900 group-hover:text-brand-600 transition-colors">
                         {c.title}
                       </h3>
-                      <p className="mt-0.5 text-sm text-slate-400">{c.issuer}</p>
-                      <div className="mt-3 flex items-center gap-3 text-xs text-slate-500 font-mono">
+                      <p className="mt-0.5 text-sm text-ink-500">{c.issuer}</p>
+                      <div className="mt-3 flex items-center gap-3 text-xs text-ink-400 font-mono">
                         <span>{c.date}</span>
                         <span className="flex items-center gap-1">
                           <ShieldCheck className="w-3 h-3" />
@@ -78,21 +70,19 @@ export default function Certificates() {
                   </div>
 
                   {/* media preview strip */}
-                  <div className="mt-5 relative h-28 rounded-xl overflow-hidden border border-white/5">
+                  <div className="mt-5 relative h-28 rounded-xl overflow-hidden border border-ink-200">
                     {c.media.type === 'image' ? (
-                      <img src={c.media.src} alt={c.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                      <img src={c.media.src} alt={c.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                     ) : (
-                      <img src={c.media.poster} alt={c.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                      <img src={c.media.poster} alt={c.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-r from-ink-900/80 to-transparent" />
-                    <div className="absolute bottom-2 left-3 flex items-center gap-2 text-xs text-slate-200">
+                    <div className="absolute inset-0 bg-gradient-to-r from-ink-50/70 to-transparent" />
+                    <div className="absolute bottom-2 left-3 flex items-center gap-2 text-xs text-ink-700">
                       {c.media.type === 'video' ? <Play className="w-3 h-3" /> : <ImageIcon className="w-3 h-3" />}
                       <span className="font-mono">View {c.media.type}</span>
                     </div>
                   </div>
                 </button>
-<<<<<<< HEAD
-=======
 
                 {c.pdfUrl && (
                   <a
@@ -100,13 +90,12 @@ export default function Certificates() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="mt-3 flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-200 hover:text-white glass transition-colors"
+                    className="mt-3 flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-ink-700 hover:text-ink-900 glass transition-colors"
                   >
-                    <FileText className="w-4 h-4" />
+                    <FileText className="w-4 h-4" style={{ color: c.accent }} />
                     View Certificate PDF
                   </a>
                 )}
->>>>>>> 7e2d0c5 (Update portfolio website files)
               </TiltCard>
             </motion.div>
           ))}

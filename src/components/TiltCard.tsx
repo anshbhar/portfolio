@@ -16,7 +16,7 @@ export default function TiltCard({
   className = '',
   maxTilt = 12,
   glare = true,
-  accent = '#38bdf8',
+  accent = '#2563eb',
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState('');
@@ -33,7 +33,7 @@ export default function TiltCard({
     setTransform(
       `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`
     );
-    setGlarePos({ x: px * 100, y: py * 100, o: 0.25 });
+    setGlarePos({ x: px * 100, y: py * 100, o: 0.18 });
   };
 
   const reset = () => {
@@ -55,7 +55,7 @@ export default function TiltCard({
           className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
           style={{
             opacity: glarePos.o,
-            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, ${accent}40, transparent 60%)`,
+            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, ${accent}30, transparent 60%)`,
           }}
         />
       )}
